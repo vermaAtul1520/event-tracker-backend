@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const Account = require('./routers/Account')
+const Account = require('./routes/Account')
 const authenticateUser = require('./Middleware/Auth')
 require('./db/mongoose')
 require('dotenv').config()

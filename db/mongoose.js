@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 mongoose.set('strictQuery', false);
-console.log("Url",process.env.MONGO_URL)
+
 mongoose.connect(process.env.MONGO_URL, {
     // useNewUrlParser: true,
     // useUnifiedTopology: true
