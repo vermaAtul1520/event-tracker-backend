@@ -2,28 +2,22 @@ const express = require('express')
 const cors = require('cors')
 const Account = require('./routes/Account')
 const Events = require('./routes/Events')
+const Ticket = require('./routes/Tickets')
 const authenticateUser = require('./Middleware/Auth')
 require('./db/mongoose')
 require('dotenv').config()
 
-// const entrepreneurRouter = require('./routers/entrepreneur')
-// const investorRouter = require('./routers/investor')
-// const pitchRouter = require('./routers/pitches')
-// const userRouter = require('./routers/user')
 
 const app = express()
 
 const port = process.env.PORT
 
 app.use(express.json())
-// app.use(entrepreneurRouter)
-// app.use(investorRouter)
-// app.use(pitchRouter)
-// app.use(userRouter)
 
 app.use('/accounts', Account);
 app.use(authenticateUser);
 app.use('/events',Events);
+app.use('/tickets',Ticket)
 
 app.use(
   cors({
