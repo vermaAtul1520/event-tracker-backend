@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const Account = require('./routes/Account')
+const Events = require('./routes/Events')
 const authenticateUser = require('./Middleware/Auth')
 require('./db/mongoose')
 require('dotenv').config()
@@ -22,6 +23,7 @@ app.use(express.json())
 
 app.use('/accounts', Account);
 app.use(authenticateUser);
+app.use('/events',Events);
 
 app.use(
   cors({
