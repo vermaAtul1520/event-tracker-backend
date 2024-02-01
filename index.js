@@ -13,17 +13,17 @@ const app = express()
 const port = process.env.PORT
 
 app.use(express.json())
+app.use(
+  cors({
+    origin: '*',
+  }),
+)
 
 app.use('/accounts', Account);
 app.use(authenticateUser);
 app.use('/events',Events);
 app.use('/tickets',Ticket)
 
-app.use(
-  cors({
-    origin: '*',
-  }),
-)
 
 app.get('/', (req, res) => {
   res.send({ msg: 'Hey congratulations, we are connected' })
