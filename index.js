@@ -3,6 +3,8 @@ const cors = require('cors')
 const Account = require('./routes/Account')
 const Events = require('./routes/Events')
 const Ticket = require('./routes/Tickets')
+const Comments = require('./routes/Comments')
+
 const authenticateUser = require('./Middleware/Auth')
 require('./db/mongoose')
 require('dotenv').config()
@@ -22,7 +24,8 @@ app.use(
 app.use('/accounts', Account);
 app.use(authenticateUser);
 app.use('/events',Events);
-app.use('/tickets',Ticket)
+app.use('/tickets',Ticket);
+app.use('/comments',Comments)
 
 
 app.get('/', (req, res) => {
