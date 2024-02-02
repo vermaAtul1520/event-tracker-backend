@@ -43,5 +43,35 @@ Router.get('/logout', async (req, res) => {
     res.json({ message: 'Logout successful' });
 })
 
+// Endpoint to deactivate a user
+Router.put('/deactivate/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        // Find the user by ID and update its isActive field to false
+        await User.findByIdAndUpdate(userId, { isActive: false });
+
+        res.json({ message: 'User deactivated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
+// Endpoint to reactivate a user
+Router.put('/reactivate/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        // Find the user by ID and update its isActive field to true
+        await User.findByIdAndUpdate(userId, { isActive: true });
+
+        res.json({ message: 'User reactivated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 
 module.exports = Router;
