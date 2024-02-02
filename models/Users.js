@@ -1,8 +1,19 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
+  username: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
 });
 
 // Hash the user password before saving it to the database
