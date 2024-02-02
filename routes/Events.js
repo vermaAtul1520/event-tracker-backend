@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/Event');
+const { setCache } = require('../Middleware/RedisMiddleware');
 
 // Route to create a new event
 router.post('/create', async (req, res) => {
@@ -10,7 +11,7 @@ router.post('/create', async (req, res) => {
     const organizerId = req.user._id;
 
     const { title, description, date, time, location } = req.body;
-console.log("dfghjk",organizerId);
+
     // Create a new event
     const newEvent = new Event({
       title,
@@ -36,6 +37,9 @@ router.get('/all', async (req, res) => {
   try {
     // Fetch all events from the database
     const events = await Event.find();
+
+    // to set data in cache for 1hour by default
+    setCache(`${req.path}`, JSON.stringify(events))
     res.json({ events });
   } catch (error) {
     console.error(error);

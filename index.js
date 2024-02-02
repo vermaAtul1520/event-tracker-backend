@@ -7,6 +7,7 @@ const Comments = require('./routes/Comments')
 const Rating = require('./routes/Rating')
 
 const authenticateUser = require('./Middleware/Auth')
+const {cacheMiddleware} = require('./Middleware/RedisMiddleware')
 require('./db/mongoose')
 require('dotenv').config()
 
@@ -24,10 +25,13 @@ app.use(
 
 app.use('/accounts', Account);
 app.use(authenticateUser);
-app.use('/events',Events);
 app.use('/tickets',Ticket);
 app.use('/comments',Comments);
 app.use('/rates',Rating)
+
+// caching apply below this route..
+app.use(cacheMiddleware)
+app.use('/events',Events);
 
 
 app.get('/', (req, res) => {
