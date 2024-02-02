@@ -9,11 +9,6 @@ The Event Management Tool is a Node.js backend project designed for managing eve
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Database Design](#database-design)
-- [Authentication](#authentication)
-- [Indexing](#indexing)
-- [Caching](#caching)
 - [Contributing](#contributing)
 - [License](#license)
 
