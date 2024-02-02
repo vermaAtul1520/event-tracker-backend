@@ -4,6 +4,7 @@ const Account = require('./routes/Account')
 const Events = require('./routes/Events')
 const Ticket = require('./routes/Tickets')
 const Comments = require('./routes/Comments')
+const Rating = require('./routes/Rating')
 
 const authenticateUser = require('./Middleware/Auth')
 require('./db/mongoose')
@@ -25,7 +26,8 @@ app.use('/accounts', Account);
 app.use(authenticateUser);
 app.use('/events',Events);
 app.use('/tickets',Ticket);
-app.use('/comments',Comments)
+app.use('/comments',Comments);
+app.use('/rates',Rating)
 
 
 app.get('/', (req, res) => {
