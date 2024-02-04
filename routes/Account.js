@@ -29,7 +29,7 @@ Router.post('/register', async (req, res, next) => {
         await newUser.save();
         res.json({ message: 'User registered successfully' });
     } catch (error) {
-        next(error);
+        res.json({ message: 'User registeration failed',error});
     }
 });
 
