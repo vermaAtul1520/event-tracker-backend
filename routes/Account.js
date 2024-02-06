@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 Router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    // Replace with actual user authentication logic (e.g., check against a database)
     const user = User.find({ username, password });
 
     if (!user) {

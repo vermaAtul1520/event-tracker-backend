@@ -6,7 +6,6 @@ const { setCache } = require('../Middleware/RedisMiddleware');
 // Route to create a new event
 router.post('/create', async (req, res) => {
   try {
-    // Assuming the user is authenticated, and you have access to the user ID
     const organizerId = req.user._id;
 
     const { title, description, date, time, location } = req.body;
@@ -75,7 +74,7 @@ router.put('/:eventId', async (req, res) => {
     const updatedEvent = await Event.findByIdAndUpdate(
       eventId,
       { title, description, date, time, location },
-      { new: true } // Return the updated document
+      { new: true } 
     );
 
     if (!updatedEvent) {

@@ -70,7 +70,7 @@ router.get('/event/:eventID', async (req, res) => {
 router.put('/:ticketID', async (req, res) => {
     try {
         const ticketID = req.params.ticketID;
-        const userID = req.user._id; // Assuming you have middleware to authenticate and set the user ID in req.user
+        const userID = req.user._id; 
 
         // Check if the ticket exists and is associated with the user
         const ticket = await Ticket.findOne({ _id: ticketID, user: userID });
@@ -106,9 +106,6 @@ router.delete('/:ticketID', async (req, res) => {
         if (!deletedTicket) {
             return res.status(404).json({ message: 'Ticket not found for this id' });
         }
-
-        // Remove the ticket from the database
-        // await Ticket.deleteOne({ _id: ticketID, user: userID });
 
         res.status(204).end({message:"Sucessfullyy delted"}); 
     } catch (error) {

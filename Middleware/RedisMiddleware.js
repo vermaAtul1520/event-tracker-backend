@@ -20,9 +20,9 @@ const cacheMiddleware = async (req, res, next) => {
     next();
 }
 
-
+// This function is used anywhere to set the data in cache
 async function setCache(key,value,options = {},) {
-    let expireTime = options?.expire ||  1 * 60 * 60;
+    let expireTime = options?.expire ||  1 * 60 * 60; // by defaoult caching time is 1 hour..
 
     try {
         await RedisClient.setex(key, expireTime, value);
