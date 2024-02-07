@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 Router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    // Replace with actual user authentication logic (e.g., check against a database)
     const user = User.find({ username, password });
 
     if (!user) {
@@ -29,7 +28,7 @@ Router.post('/register', async (req, res, next) => {
         await newUser.save();
         res.json({ message: 'User registered successfully' });
     } catch (error) {
-        next(error);
+        res.json({ message: 'User registeration failed',error});
     }
 });
 

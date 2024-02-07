@@ -73,7 +73,7 @@ router.delete('/:commentID', async (req, res) => {
         const commentID = req.params.commentID;
 
         // Find the comment and check if it belongs to the user
-        const comment = await Comment.findOneAndDelete({ _id: commentID, user: req.user._id }); // Assuming you have middleware to authenticate and set the user ID in req.user
+        const comment = await Comment.findOneAndDelete({ _id: commentID, user: req.user._id }); 
 
         if (!comment) {
             return res.status(404).json({ message: 'Comment not found or unauthorized access' });

@@ -8,8 +8,7 @@ router.post('/:eventId', async (req, res) => {
     const { eventId } = req.params;
     const { rating } = req.body;
 
-    // Assuming you have user authentication in place, retrieve the user ID
-    const userId = req.user._id; // Adjust this based on your authentication setup
+    const userId = req.user._id; 
 
     // Find the event by ID
     const event = await Event.findById(eventId);
